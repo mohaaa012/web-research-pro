@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: docs-plugin-install-commands
+expected_outcome: |
+  The answer finds the marketplace pages of the Claude Code docs and gives the exact commands: claude plugin marketplace add <owner/repo or path> and claude plugin install <plugin>@<marketplace> (or their /plugin equivalents inside a session), citing the pages used.

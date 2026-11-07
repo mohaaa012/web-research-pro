@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Build output
+dist/
+*.skill
+
+# Things the skill writes when you run it inside the repo
+crawl-*/
+*-workspace/
+*.png
+!.claude-plugin/icon.png
+
+# Never commit logins
+cookies*.txt
+*cookies*.json
+sessions/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

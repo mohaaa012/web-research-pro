@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: pdf-paper-details
+expected_outcome: |
+  The answer reads the 14-page TraceMonkey paper, names it, gives Andreas Gal and Brendan Eich as the first two authors, gives five summary points, and reports the measured speedups (10x and more on some benchmarks, up to 25x faster than the SpiderMonkey interpreter).

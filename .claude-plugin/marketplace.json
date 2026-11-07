@@ -1,0 +1,15 @@
+{
+  "name": "mohaaa012-plugins",
+  "description": "Claude Code plugins by mohaaa012",
+  "owner": {
+    "name": "mohaaa012",
+    "url": "https://github.com/mohaaa012"
+  },
+  "plugins": [
+    {
+      "name": "web-research-pro",
+      "source": "./",
+      "description": "Web research beyond WebFetch/WebSearch: real browser, smart fallbacks, your own logins, PDFs, crawling, monitoring and multi-engine search."
+    }
+  ]
+}

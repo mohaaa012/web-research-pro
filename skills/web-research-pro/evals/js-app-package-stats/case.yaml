@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: js-app-package-stats
+expected_outcome: |
+  The page is a JavaScript application whose plain HTML is empty. A good answer renders it (or uses the crates.io API) and reports the latest 1.0.x version, an all-time download count above one billion, and the MIT OR Apache-2.0 licence, naming crates.io as the source.

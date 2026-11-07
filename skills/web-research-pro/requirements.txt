@@ -1,0 +1,6 @@
+# Optional extras for web-research-pro. The scripts run without them, with fewer features.
+# Installed into a private virtualenv (~/.web-research-pro/venv) by install.sh / doctor.py --setup.
+playwright>=1.45        # real browser for JavaScript pages, screenshots and logins
+trafilatura>=1.9        # clean article extraction (drops menus, ads and cookie banners)
+pypdf>=4.0              # text from PDF files
+certifi                 # up-to-date TLS certificates (macOS python.org builds lack them)

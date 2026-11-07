@@ -1,0 +1,14 @@
+{
+  "name": "web-research-pro",
+  "displayName": "Web Research Pro",
+  "version": "1.0.0",
+  "description": "Web research beyond WebFetch/WebSearch: real browser for JavaScript pages, automatic fallbacks when sites block bots (browser, reader, Wayback Machine), your own logins, PDFs, feeds, crawling, change monitoring and multi-engine search.",
+  "author": {
+    "name": "mohaaa012",
+    "url": "https://github.com/mohaaa012"
+  },
+  "homepage": "https://github.com/mohaaa012/web-research-pro",
+  "repository": "https://github.com/mohaaa012/web-research-pro",
+  "license": "MIT",
+  "keywords": ["web", "research", "search", "scraping", "browser", "playwright", "pdf", "crawler", "monitoring"]
+}
