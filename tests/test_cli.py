@@ -9,9 +9,10 @@ from conftest import SCRIPTS
 
 
 def run(script, *args, env=None):
-    full_env = dict(os.environ, **(env or {}))
+    # The scripts always write UTF-8; read it as UTF-8 (Windows would default to cp1252).
+    full_env = dict(os.environ, PYTHONIOENCODING="utf-8", **(env or {}))
     proc = subprocess.run([sys.executable, str(SCRIPTS / script), *args], capture_output=True, text=True,
-                          timeout=180, env=full_env)
+                          encoding="utf-8", errors="replace", timeout=180, env=full_env)
     return proc.returncode, proc.stdout, proc.stderr
 
 
@@ -65,7 +66,7 @@ def test_login_save_without_display_explains_alternative():
         return
     env = {k: v for k, v in os.environ.items() if k not in ("DISPLAY", "WAYLAND_DISPLAY")}
     proc = subprocess.run([sys.executable, str(SCRIPTS / "login.py"), "save", "x", "--url", "https://example.com"],
-                          capture_output=True, text=True, env=env, timeout=60)
+                          capture_output=True, text=True, encoding="utf-8", env=env, timeout=60)
     assert proc.returncode == 2 and "login.py import" in proc.stderr
 
 

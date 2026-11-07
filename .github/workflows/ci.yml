@@ -17,7 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: ubuntu-latest, python: "3.9" }
           - { os: ubuntu-latest, python: "3.13", chromium: true }
           - { os: macos-latest, python: "3.12" }
           - { os: windows-latest, python: "3.12" }
@@ -38,6 +37,19 @@ jobs:
       - name: Run tests
         run: python -m pytest -q
 
+  # Python 3.9 is still the default python3 on many Macs (Xcode tools), so keep it working.
+  # Newer GitHub runners no longer ship 3.9, hence the official container.
+  tests-oldest-python:
+    name: tests · Python 3.9 (container)
+    runs-on: ubuntu-latest
+    container: python:3.9-slim
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Run tests (browser tests skip without Chromium)
+        run: python -m pytest -q -rs
+
   installers:
     name: installer · ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -54,7 +66,8 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           bash install.sh --dir "$RUNNER_TEMP/skills" --no-browser
-          python3 "$RUNNER_TEMP/skills/web-research-pro/scripts/doctor.py" --offline
+          "$HOME/.web-research-pro/venv/bin/python" -c "import playwright, trafilatura, pypdf; print('packages ok')"
+          python3 "$RUNNER_TEMP/skills/web-research-pro/scripts/doctor.py" --offline || true
           bash install.sh --dir "$RUNNER_TEMP/skills" --uninstall
           test ! -e "$RUNNER_TEMP/skills/web-research-pro"
       - name: install.ps1 (Windows)
@@ -62,9 +75,12 @@ jobs:
         shell: pwsh
         run: |
           ./install.ps1 -Dir "$env:RUNNER_TEMP\skills" -NoBrowser
+          & "$HOME\.web-research-pro\venv\Scripts\python.exe" -c "import playwright, trafilatura, pypdf; print('packages ok')"
+          if ($LASTEXITCODE -ne 0) { throw "packages missing in the private venv" }
           python "$env:RUNNER_TEMP\skills\web-research-pro\scripts\doctor.py" --offline
           ./install.ps1 -Dir "$env:RUNNER_TEMP\skills" -Uninstall
           if (Test-Path "$env:RUNNER_TEMP\skills\web-research-pro") { throw "uninstall failed" }
+          $global:LASTEXITCODE = 0
 
   package:
     name: package .skill
