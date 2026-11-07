@@ -1,9 +1,17 @@
 name: Release
 
-# Push a tag like v1.0.0 to publish a GitHub release with the .skill file attached.
+# Publishes a GitHub release with web-research-pro.skill attached.
+# To release a new version, bump "version" in .claude-plugin/plugin.json and push to main:
+# this workflow creates the tag v<version> and the release if they do not exist yet.
+# (Pushing a tag v* by hand, or running it from the Actions tab, also works.)
 on:
   push:
+    branches: [main]
+    paths:
+      - .claude-plugin/plugin.json
+      - .github/workflows/release.yml
     tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,13 +24,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Work out the version
+        id: version
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            echo "tag=$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=v$(python -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")" >> "$GITHUB_OUTPUT"
+          fi
       - name: Build the .skill package
         run: python tools/package_skill.py
-      - name: Publish the release
+      - name: Publish (or update) the release
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
         run: |
-          gh release create "$GITHUB_REF_NAME" dist/web-research-pro.skill \
-            --title "Web Research Pro $GITHUB_REF_NAME" \
-            --notes "See CHANGELOG.md for what changed. Download **web-research-pro.skill** to upload it to claude.ai (Settings → Capabilities → Skills), or use the one-line installers from the README." \
-            || gh release upload "$GITHUB_REF_NAME" dist/web-research-pro.skill --clobber
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/web-research-pro.skill --clobber
+            echo "updated the .skill file of existing release $TAG"
+          else
+            gh release create "$TAG" dist/web-research-pro.skill \
+              --target "$GITHUB_SHA" \
+              --title "Web Research Pro $TAG" \
+              --notes "Download **web-research-pro.skill** to upload it to claude.ai (Settings → Capabilities → Skills), or install with the one-line installers from the README. Changes: see CHANGELOG.md."
+            echo "created release $TAG"
+          fi
