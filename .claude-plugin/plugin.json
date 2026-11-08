@@ -10,5 +10,23 @@
   "homepage": "https://github.com/mohaaa012/web-research-pro",
   "repository": "https://github.com/mohaaa012/web-research-pro",
   "license": "MIT",
-  "keywords": ["web", "research", "search", "scraping", "browser", "playwright", "pdf", "crawler", "monitoring"]
+  "keywords": [
+    "web",
+    "research",
+    "search",
+    "scraping",
+    "browser",
+    "playwright",
+    "pdf",
+    "crawler",
+    "monitoring",
+    "claude-code",
+    "skill",
+    "webfetch-alternative",
+    "web-scraping",
+    "headless-browser",
+    "wayback-machine",
+    "markdown",
+    "rss"
+  ]
 }

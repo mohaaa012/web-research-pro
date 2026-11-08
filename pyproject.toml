@@ -5,6 +5,13 @@ description = "Claude skill for web research beyond WebFetch/WebSearch"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
+keywords = ["claude-code", "claude-skill", "web-research", "web-scraping", "webfetch-alternative", "playwright", "headless-browser", "pdf", "crawler", "monitoring"]
+
+[project.urls]
+Homepage = "https://mohaaa012.github.io/web-research-pro/"
+Repository = "https://github.com/mohaaa012/web-research-pro"
+Issues = "https://github.com/mohaaa012/web-research-pro/issues"
+Changelog = "https://github.com/mohaaa012/web-research-pro/blob/main/CHANGELOG.md"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

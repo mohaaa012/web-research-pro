@@ -2,6 +2,12 @@
 
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/); versiones con [SemVer](https://semver.org/lang/es/).
 
+## [Sin publicar]
+
+### Añadido
+- Web del proyecto en `site/` (español e inglés) publicada con GitHub Pages: metadatos para buscadores y redes sociales, datos estructurados, sitemap e imagen de vista previa.
+- Sección de preguntas frecuentes en los README y más palabras clave en `plugin.json` y `pyproject.toml`.
+
 ## [1.0.0] - 2026-11-07
 
 Primera versión.

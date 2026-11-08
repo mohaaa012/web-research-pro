@@ -5,9 +5,10 @@
 <h1 align="center">Web Research Pro</h1>
 
 <p align="center">
-  <b>Un skill para Claude que investiga en internet de verdad:</b><br>
+  <b>Un skill (y plugin) de Claude Code que investiga en internet de verdad:</b><br>
   lee páginas con JavaScript, esquiva bloqueos de forma legítima, entra con <i>tus</i> cuentas,<br>
-  lee PDFs completos, rastrea webs enteras, vigila cambios y busca en varios motores.
+  lee PDFs completos, rastrea webs enteras, vigila cambios y busca en varios motores.<br>
+  Una alternativa a WebFetch y WebSearch que devuelve el texto completo, no un resumen.
 </p>
 
 <p align="center">
@@ -197,6 +198,32 @@ Si una web tiene una protección fuerte (como npmjs.com con Cloudflare), te lo d
 - Solo dos escalones usan terceros: el lector (envía la **URL**, nunca cookies, a Jina AI) y la copia archivada (consulta a archive.org). Se desactivan con `--no-third-party` y nunca se usan con tu sesión.
 
 Más en [SECURITY.md](SECURITY.md).
+
+## Preguntas frecuentes
+
+### ¿Es una alternativa a WebFetch y WebSearch de Claude?
+
+Sí. WebFetch pasa la página a un modelo pequeño y devuelve su resumen, no ejecuta JavaScript ni puede iniciar sesión. Web Research Pro devuelve el texto completo, usa un navegador real cuando hace falta y busca con región. Para una consulta rápida, WebSearch sigue valiendo: Claude elige la opción más barata en cada caso.
+
+### ¿Cómo hago que Claude lea páginas hechas con JavaScript?
+
+Instala el skill y pásale la URL a Claude. Si la respuesta normal llega vacía, el skill abre la página en Chromium, espera a que se pinte y devuelve el texto en Markdown.
+
+### ¿Puede Claude leer un PDF largo entero?
+
+Sí. `fetch.py` extrae el texto de todas las páginas, con marcas de página para citar. En el benchmark, un PDF de 14 páginas se leyó completo en 1,3 segundos.
+
+### ¿Sirve para hacer web scraping con Claude Code?
+
+Sí, de forma educada: `crawl.py` guarda una sección entera de una web como archivos Markdown, respeta `robots.txt`, espera entre peticiones y quita duplicados. No está pensado para saltarse protecciones.
+
+### ¿Funciona en claude.ai o Claude Desktop?
+
+Puedes subir el archivo `.skill` en **Settings → Capabilities → Skills**, pero allí el entorno puede no tener navegador ni acceso libre a internet. La experiencia completa es en Claude Code.
+
+### ¿Cuánto cuesta?
+
+Nada. Es open source con licencia MIT. Las claves de búsqueda (Brave, Tavily, SearXNG) son opcionales y todas tienen plan gratuito.
 
 ## Desarrollo
 

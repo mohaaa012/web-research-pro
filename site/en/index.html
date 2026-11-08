@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Research Pro · Claude Code web research skill (WebFetch alternative)</title>
+  <meta name="description" content="Free, open-source Claude Code skill: reads JavaScript pages in a real browser, full PDFs and bot-blocked sites, crawls docs and monitors pages for changes.">
+  <link rel="canonical" href="https://mohaaa012.github.io/web-research-pro/en/">
+  <link rel="alternate" hreflang="es" href="https://mohaaa012.github.io/web-research-pro/">
+  <link rel="alternate" hreflang="en" href="https://mohaaa012.github.io/web-research-pro/en/">
+  <link rel="alternate" hreflang="x-default" href="https://mohaaa012.github.io/web-research-pro/en/">
+  <meta name="theme-color" content="#111a36">
+  <link rel="icon" type="image/png" sizes="64x64" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../style.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Web Research Pro">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:title" content="Web Research Pro · Claude Code web research skill">
+  <meta property="og:description" content="Reads JavaScript pages, full PDFs and bot-blocked sites. Uses your own logins, crawls sites and monitors changes. Free and open source.">
+  <meta property="og:url" content="https://mohaaa012.github.io/web-research-pro/en/">
+  <meta property="og:image" content="https://mohaaa012.github.io/web-research-pro/og.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Web Research Pro: the Claude Code skill for real web research">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Web Research Pro",
+    "alternateName": "web-research-pro",
+    "description": "Claude Code skill and plugin for web research: renders JavaScript pages in a real browser, reads PDFs, feeds and JSON APIs, uses the user's own logins, crawls sites, monitors changes and searches several engines.",
+    "url": "https://mohaaa012.github.io/web-research-pro/en/",
+    "codeRepository": "https://github.com/mohaaa012/web-research-pro",
+    "programmingLanguage": "Python",
+    "runtimePlatform": "Claude Code",
+    "license": "https://opensource.org/licenses/MIT",
+    "version": "1.0.0",
+    "inLanguage": ["en", "es"],
+    "image": "https://mohaaa012.github.io/web-research-pro/og.png",
+    "keywords": "Claude Code, skill, plugin, WebFetch alternative, web scraping, headless browser, Playwright, PDF, crawler, change monitoring",
+    "author": { "@type": "Person", "name": "mohaaa012", "url": "https://github.com/mohaaa012" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header class="hero">
+    <nav class="wrap nav" aria-label="Main">
+      <a class="brand" href="./"><img src="../apple-touch-icon.png" alt="" width="36" height="36">Web Research Pro</a>
+      <ul>
+        <li><a class="link" href="#features">Features</a></li>
+        <li><a class="link" href="#install">Install</a></li>
+        <li><a class="link" href="#faq">FAQ</a></li>
+        <li><a class="link" href="https://github.com/mohaaa012/web-research-pro">GitHub</a></li>
+        <li><a class="link" href="../" hreflang="es" lang="es">Español</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrap hero-body">
+      <span class="eyebrow">Claude Code skill + plugin · free and open source</span>
+      <h1>Web Research Pro: the Claude Code skill for real web research<span class="dot">.</span></h1>
+      <p class="lead">
+        Reads JavaScript pages in a real browser, full PDFs and sites that block bots (through legitimate routes),
+        uses <em>your</em> own logins, crawls whole sites and watches pages for changes. A WebFetch and WebSearch
+        alternative that returns the full text and never invents what it could not read.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#install">Install in a minute</a>
+        <a class="btn btn-ghost" href="https://github.com/mohaaa012/web-research-pro">View the code on GitHub</a>
+      </div>
+      <ul class="stats">
+        <li><strong>100% vs 75%</strong><span>on the benchmark vs WebFetch only</span></li>
+        <li><strong>79 tests</strong><span>on Linux, macOS and Windows</span></li>
+        <li><strong>4 rungs</strong><span>HTTP → browser → reader → archive</span></li>
+        <li><strong>MIT</strong><span>free · Python 3.9+</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="content">
+    <section id="features" class="wrap">
+      <h2>What it is for</h2>
+      <p class="section-intro">
+        Claude's built-in web tools fall short in many real cases. Web Research Pro gives Claude a set of local scripts
+        that read the web the way a careful person would.
+      </p>
+      <div class="grid">
+        <article class="card">
+          <p class="problem">JavaScript pages come back empty</p>
+          <h3>Real browser (Chromium)</h3>
+          <p>Opens apps, dashboards and shops in a real browser and waits until they finish rendering.</p>
+        </article>
+        <article class="card">
+          <p class="problem">The site blocks automated requests (403)</p>
+          <h3>Automatic fallback ladder</h3>
+          <p>Tries a browser, a reader service and the Wayback Machine copy. No CAPTCHA solving.</p>
+        </article>
+        <article class="card">
+          <p class="problem">WebFetch returns a summary, so figures and tables get lost</p>
+          <h3>Full text as Markdown</h3>
+          <p>Keeps tables, links and code blocks, with a header saying exactly how the content was obtained.</p>
+        </article>
+        <article class="card">
+          <p class="problem">Compressed PDFs cannot be read</p>
+          <h3>PDFs, RSS/Atom and JSON</h3>
+          <p>Extracts the text of every page of a PDF, with page markers so you can cite it.</p>
+        </article>
+        <article class="card">
+          <p class="problem">The content is behind your login</p>
+          <h3>Your own sessions</h3>
+          <p>You sign in yourself in a real window; the session stays on your machine and your password never goes through Claude.</p>
+        </article>
+        <article class="card">
+          <p class="problem">You need many pages, or to track a price</p>
+          <h3>Crawling, monitoring and search</h3>
+          <p>Saves whole site sections, tells you when something changes and searches by region on DuckDuckGo, GitHub, arXiv, Reddit and more.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="results" class="wrap">
+      <h2>Measured results</h2>
+      <p class="section-intro">
+        Four real tasks, with and without the skill (WebFetch only, even letting the agent try APIs and links).
+        Method and limitations in <a href="https://github.com/mohaaa012/web-research-pro/blob/main/docs/BENCHMARK.md">BENCHMARK.md</a>.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th scope="col">Task</th><th scope="col">Without the skill</th><th scope="col">With the skill</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>JavaScript app (crates.io: downloads, version, license)</td><td><span class="warn">Partial</span> · page comes back empty</td><td><span class="ok">Correct</span> · real browser in 5 s</td></tr>
+            <tr><td>14-page PDF (TraceMonkey paper)</td><td><span class="bad">Fails</span> · "compressed binary"</td><td><span class="ok">Correct</span> · full text in 1.3 s</td></tr>
+            <tr><td>Cloudflare-protected site (npmjs.com)</td><td><span class="ok">Correct</span> · does not invent the figure</td><td><span class="ok">Correct</span> · explains the block and offers another route</td></tr>
+            <tr><td>Docs (exact Claude Code commands)</td><td><span class="ok">Correct</span></td><td><span class="ok">Correct</span></td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td>Total</td><td>75%</td><td>100%</td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="wrap">
+      <h2>How it works</h2>
+      <p class="section-intro">It only climbs a rung when needed, so the usual case is fast (under a second).</p>
+      <ol class="ladder">
+        <li><h3>HTTP</h3><p>A request with browser headers. Handles articles, docs, PDFs, feeds and APIs.</p></li>
+        <li><h3>Browser</h3><p>Real Chromium when the page is a JavaScript shell or hits an anti-bot wall.</p></li>
+        <li><h3>Reader</h3><p>The r.jina.ai service turns the page into Markdown from its own servers.</p></li>
+        <li><h3>Archive</h3><p>The Wayback Machine copy, always labelled with its date.</p></li>
+      </ol>
+      <p class="note">With your session, or on private addresses (intranet, localhost), it never uses third-party services.</p>
+    </section>
+
+    <section id="install" class="wrap">
+      <h2>Install</h2>
+      <p class="section-intro">
+        Requires Python 3.9+ and <a href="https://code.claude.com">Claude Code</a>. The installer creates a private
+        environment in <code>~/.web-research-pro</code> and downloads Chromium once (about 200 MB).
+      </p>
+      <div class="install">
+        <div>
+          <h3>macOS / Linux</h3>
+          <div class="code"><pre><code>curl -fsSL https://raw.githubusercontent.com/mohaaa012/web-research-pro/main/install.sh | bash</code></pre><button class="copy" type="button" data-done="Copied!">Copy</button></div>
+        </div>
+        <div>
+          <h3>Windows (PowerShell)</h3>
+          <div class="code"><pre><code>irm https://raw.githubusercontent.com/mohaaa012/web-research-pro/main/install.ps1 | iex</code></pre><button class="copy" type="button" data-done="Copied!">Copy</button></div>
+        </div>
+        <div>
+          <h3>As a Claude Code plugin</h3>
+          <div class="code"><pre><code>claude plugin marketplace add mohaaa012/web-research-pro
+claude plugin install web-research-pro@mohaaa012-plugins</code></pre><button class="copy" type="button" data-done="Copied!">Copy</button></div>
+        </div>
+      </div>
+      <p class="note">
+        Then restart Claude Code and just talk to it: <em>"Read this PDF and give me the key figures"</em>,
+        <em>"Watch this page and tell me if the price drops below €150"</em>. For claude.ai, download the
+        <code>.skill</code> file from <a href="https://github.com/mohaaa012/web-research-pro/releases">Releases</a>.
+      </p>
+    </section>
+
+    <section id="limits" class="wrap">
+      <h2>What it does not do (and why)</h2>
+      <p class="section-intro">Honesty is part of the design.</p>
+      <ul class="nope">
+        <li><strong>No CAPTCHA solving or anti-bot evasion.</strong> <span>It looks for legitimate routes instead: public APIs, RSS, archived copies or other sources.</span></li>
+        <li><strong>No paywall bypassing.</strong> <span>It finds the information in open sources and tells you the original was paywalled.</span></li>
+        <li><strong>No access to other people's accounts.</strong> <span>Only yours, with your permission.</span></li>
+        <li><strong>No aggressive crawling.</strong> <span>It obeys robots.txt, waits between requests and has a page limit.</span></li>
+      </ul>
+    </section>
+
+    <section id="faq" class="wrap faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Is it an alternative to Claude's WebFetch and WebSearch?</summary>
+        <p>Yes. WebFetch hands the page to a small model and returns its summary; it cannot run JavaScript or log in. Web Research Pro returns the full text, uses a real browser when needed and searches by region. For a quick lookup, WebSearch is still fine; Claude picks the cheaper option each time.</p>
+      </details>
+      <details>
+        <summary>How do I make Claude read JavaScript-rendered pages?</summary>
+        <p>Install the skill and give Claude the URL. If the plain response comes back empty, the skill opens the page in Chromium, waits for it to render and returns the text as Markdown.</p>
+      </details>
+      <details>
+        <summary>Can Claude read a long PDF in full?</summary>
+        <p>Yes. <code>fetch.py</code> extracts the text of every page, with page markers for citing. In the benchmark, a 14-page PDF was read in full in 1.3 seconds.</p>
+      </details>
+      <details>
+        <summary>Can I use it for web scraping with Claude Code?</summary>
+        <p>Yes, politely: <code>crawl.py</code> saves a whole site section as Markdown files, obeys robots.txt, waits between requests and removes duplicates. It is not meant to get around protections.</p>
+      </details>
+      <details>
+        <summary>Does it work on claude.ai or Claude Desktop?</summary>
+        <p>You can upload the <code>.skill</code> file in Settings → Capabilities → Skills, but that environment may have no browser or open internet access. The full experience is in Claude Code.</p>
+      </details>
+      <details>
+        <summary>How much does it cost?</summary>
+        <p>Nothing. It is open source under the MIT license. Search keys (Brave, Tavily, SearXNG) are optional and all have free tiers.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>MIT © 2026 mohaaa012 · Built with Claude Code</span>
+      <span><a href="https://github.com/mohaaa012/web-research-pro">GitHub</a> · <a href="https://github.com/mohaaa012/web-research-pro/issues">Issues</a> · <a href="../" hreflang="es" lang="es">Español</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.parentElement.querySelector('code').innerText;
+        var label = btn.textContent;
+        var done = function () { btn.textContent = btn.dataset.done || 'Copied!'; setTimeout(function () { btn.textContent = label; }, 1500); };
+        if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, function () {}); }
+      });
+    });
+  </script>
+</body>
+</html>

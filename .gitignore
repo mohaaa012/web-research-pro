@@ -14,6 +14,7 @@ crawl-*/
 *-workspace/
 *.png
 !.claude-plugin/icon.png
+!site/*.png
 
 # Never commit logins
 cookies*.txt

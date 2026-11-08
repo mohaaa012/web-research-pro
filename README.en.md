@@ -5,8 +5,9 @@
 <h1 align="center">Web Research Pro</h1>
 
 <p align="center">
-  <b>A Claude skill for real web research:</b> JavaScript pages, legitimate fallbacks when sites block bots,
-  your own logins, full PDFs, site crawling, change monitoring and multi-engine search.
+  <b>A Claude Code skill (and plugin) for real web research:</b> JavaScript pages, legitimate fallbacks when sites block bots,
+  your own logins, full PDFs, site crawling, change monitoring and multi-engine search.<br>
+  A WebFetch and WebSearch alternative that returns the full text, not a summary.
 </p>
 
 <p align="center"><a href="README.md">Versión en español</a></p>
@@ -91,6 +92,32 @@ and tells you plainly when something is not accessible.
 Everything runs on your machine. Only two optional rungs involve third parties: the reader service (receives the URL,
 never cookies) and the Wayback Machine. Both are skipped with `--no-third-party`, for private/intranet addresses, and
 whenever a session is used. See [SECURITY.md](SECURITY.md).
+
+## FAQ
+
+### Is it an alternative to Claude's WebFetch and WebSearch?
+
+Yes. WebFetch hands the page to a small model and returns its summary; it cannot run JavaScript or log in. Web Research Pro returns the full text, uses a real browser when needed and searches by region. For a quick lookup, WebSearch is still fine: Claude picks the cheaper option each time.
+
+### How do I make Claude read JavaScript-rendered pages?
+
+Install the skill and give Claude the URL. If the plain response comes back empty, the skill opens the page in Chromium, waits for it to render and returns the text as Markdown.
+
+### Can Claude read a long PDF in full?
+
+Yes. `fetch.py` extracts the text of every page, with page markers for citing. In the benchmark, a 14-page PDF was read in full in 1.3 seconds.
+
+### Can I use it for web scraping with Claude Code?
+
+Yes, politely: `crawl.py` saves a whole site section as Markdown files, obeys `robots.txt`, waits between requests and removes duplicates. It is not meant to get around protections.
+
+### Does it work on claude.ai or Claude Desktop?
+
+You can upload the `.skill` file in **Settings → Capabilities → Skills**, but that environment may have no browser or open internet access. The full experience is in Claude Code.
+
+### How much does it cost?
+
+Nothing. It is open source under the MIT license. Search keys (Brave, Tavily, SearXNG) are optional and all have free tiers.
 
 ## Development
 
